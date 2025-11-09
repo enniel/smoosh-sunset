@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, SafeAreaView, Text } from "react-native";
+import { StyleSheet, SafeAreaView, Text, View } from "react-native";
 
 export default class App extends React.Component {
   render() {
@@ -9,8 +9,8 @@ export default class App extends React.Component {
         <Text style={styles.h2}>
           Start editing to see some magic happen, even on your mobile device!
         </Text>
-        <br />
-        <br />
+        <View style={styles.spacer} />
+        <View style={styles.spacer} />
         <Text style={styles.paragraph}>
           Open Expo on your mobile device with scanning the QR code in the
           application log under the start tab.
@@ -44,4 +44,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
   },
+  spacer: {
+    height: 16,
+  },
 });
+

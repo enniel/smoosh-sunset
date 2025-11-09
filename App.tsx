@@ -10,20 +10,13 @@ import {
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { User, Post, Comment } from "./types";
+import { User } from "./types";
 
 const Stack = createNativeStackNavigator();
 
 const USERS_API_URL = "https://jsonplaceholder.typicode.com/users";
 const POSTS_API_URL = "https://jsonplaceholder.typicode.com/posts";
 const COMMENTS_API_URL = "https://jsonplaceholder.typicode.com/comments";
-
-// Типы для навигации
-type RootStackParamList = {
-  UsersList: undefined;
-  UserPosts: { user: User };
-  PostComments: { post: Post; userName: string };
-};
 
 // Экран списка пользователей
 function UsersListScreen({ navigation }: any) {
@@ -32,15 +25,10 @@ function UsersListScreen({ navigation }: any) {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      try {
-        const response = await fetch(USERS_API_URL);
-        const data: User[] = await response.json();
-        setUsers(data);
-      } catch (error) {
-        console.error("Error fetching users:", error);
-      } finally {
-        setLoading(false);
-      }
+      const response = await fetch(USERS_API_URL);
+      const data: User[] = await response.json();
+      setUsers(data);
+      setLoading(false);
     };
 
     fetchUsers();
@@ -82,29 +70,24 @@ function UsersListScreen({ navigation }: any) {
 // Экран постов пользователя
 function UserPostsScreen({ route, navigation }: any) {
   const { user } = route.params;
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchPosts = async () => {
-      try {
-        // Загружаем все посты
-        const response = await fetch(POSTS_API_URL);
-        const data: Post[] = await response.json();
-        // Фильтруем посты текущего пользователя
-        const userPosts = data.filter((post) => post.userId === user.id);
-        setPosts(userPosts);
-      } catch (error) {
-        console.error("Error fetching posts:", error);
-      } finally {
-        setLoading(false);
-      }
+      // Загружаем все посты
+      const response = await fetch(POSTS_API_URL);
+      const data: any[] = await response.json();
+      // Фильтруем посты текущего пользователя
+      const userPosts = data.filter((post) => post.userId === user.id);
+      setPosts(userPosts);
+      setLoading(false);
     };
 
     fetchPosts();
   }, [user.id]);
 
-  const renderPostItem = ({ item }: { item: Post }) => (
+  const renderPostItem = ({ item }: any) => (
     <TouchableOpacity
       style={styles.postCard}
       onPress={() =>
@@ -148,29 +131,24 @@ function UserPostsScreen({ route, navigation }: any) {
 // Экран комментариев к посту
 function PostCommentsScreen({ route }: any) {
   const { post, userName } = route.params;
-  const [comments, setComments] = useState<Comment[]>([]);
+  const [comments, setComments] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchComments = async () => {
-      try {
-        // Загружаем все комментарии
-        const response = await fetch(COMMENTS_API_URL);
-        const data: Comment[] = await response.json();
-        // Фильтруем комментарии к текущему посту
-        const postComments = data.filter((comment) => comment.postId === post.id);
-        setComments(postComments);
-      } catch (error) {
-        console.error("Error fetching comments:", error);
-      } finally {
-        setLoading(false);
-      }
+      // Загружаем все комментарии
+      const response = await fetch(COMMENTS_API_URL);
+      const data: any[] = await response.json();
+      // Фильтруем комментарии к текущему посту
+      const postComments = data.filter((comment) => comment.postId === post.id);
+      setComments(postComments);
+      setLoading(false);
     };
 
     fetchComments();
   }, [post.id]);
 
-  const renderCommentItem = ({ item }: { item: Comment }) => (
+  const renderCommentItem = ({ item }: any) => (
     <View style={styles.commentCard}>
       <View style={styles.commentHeader}>
         <Text style={styles.commentName}>{item.name}</Text>

@@ -11,12 +11,6 @@ export interface Address {
   geo: Geo;
 }
 
-export interface Company {
-  name: string;
-  catchPhrase: string;
-  bs: string;
-}
-
 export interface User {
   id: number;
   name: string;
@@ -25,21 +19,5 @@ export interface User {
   address: Address;
   phone: string;
   website: string;
-  company: Company;
+  company: any;
 }
-
-export interface Post {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
-
-export interface Comment {
-  postId: number;
-  id: number;
-  name: string;
-  email: string;
-  body: string;
-}
-

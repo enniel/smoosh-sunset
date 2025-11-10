@@ -1,10 +1,28 @@
-# React Native with Expo template
+# React Native с Expo
 
-By default Expo web is automatically running but you can use the QR code in the application log to open Expo on your iOS or Android device. 
+## Описание проекта
 
-Add your [configuration](https://codesandbox.io/docs/projects/learn/setting-up/tasks) to optimize it for [CodeSandbox](https://codesandbox.io/p/dashboard).
+Приложение представляет собой список пользователей с их постами и комментариями. Пользователи могут просматривать список пользователей, их посты и комментарии к каждому посту.
 
-## Resources
+## Задача для live coding interview
 
-- [CodeSandbox — Docs](https://codesandbox.io/docs/learn)
-- [CodeSandbox — Discord](https://discord.gg/Ggarp3pX5H)
+### Описание задачи
+
+Выполнить рефакторинг проекта — навести порядок в коде, улучшить читаемость, устранить очевидные антипаттерны.
+
+Кандидату необходимо:
+1. Проанализировать текущий код и составить план рефакторинга
+2. Описать выявленные проблемные места
+3. Выполнить рефакторинг согласно составленному плану
+
+## API
+
+Проект использует [JSONPlaceholder API](https://jsonplaceholder.typicode.com/) для получения данных о пользователях, постах и комментариях.
+
+## Запуск проекта
+
+По умолчанию Expo web автоматически запускается, но вы также можете использовать QR-код в логе приложения для открытия Expo на вашем iOS или Android устройстве.
+
+## Ресурсы
+
+- [CodeSandbox — Документация](https://codesandbox.io/docs/learn)
